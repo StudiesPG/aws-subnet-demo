@@ -9,16 +9,11 @@ include "envcommon" {
   expose = true
 }
 
-# Dependency commented because i will merge the vpc and subnet module, they will be used together.
-/*
-dependency "vpc" {
-  config_path = "${get_repo_root()}/path-to-vpc-module"
-}
-*/
+
 locals {}
 
 inputs = {
-  vpc_id = /*dependency.vpc.outputs.aws_vpc_id*/ "vpc-1234567"
+  vpc_id = "" #  Manually add an existing VPC ID not managed by Terragrunt
   cidr_block = "10.0.0.0/16"
   region = "us-east-1"
   tags = {
